@@ -1,6 +1,11 @@
 import json
+import time
+
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+
 
 options = webdriver.ChromeOptions()
 options.add_experimental_option("detach", True)
@@ -22,6 +27,8 @@ driver.find_element(By.XPATH,"//summary[normalize-space()='Table Data']").click(
 driver.find_element(By.XPATH,"//textarea[@id='jsondata']").clear()
 driver.find_element(By.XPATH,"//textarea[@id='jsondata']").send_keys(json_string)
 driver.find_element(By.XPATH,"//button[@id='refreshtable']").click()
+
+time.sleep(15)
 # Closing file
 f.close()
 driver.quit()
